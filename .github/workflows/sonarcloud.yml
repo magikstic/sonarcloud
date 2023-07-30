@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: My first step
-        if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
+#         if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
         run: echo ${{ github.event }}
 
       - name: Analyze with SonarCloud
