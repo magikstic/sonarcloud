@@ -43,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: My first step
+        if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
+        run: echo ${{ github.event }}
+
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
