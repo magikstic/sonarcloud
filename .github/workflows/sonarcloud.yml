@@ -19,6 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: My first step
         env:
