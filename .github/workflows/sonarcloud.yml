@@ -29,11 +29,9 @@
 name: SonarCloud analysis
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
@@ -41,7 +39,9 @@ permissions:
 jobs:
   Analysis:
     runs-on: ubuntu-latest
-
+    
+    if: github.event.workflow_run.conclusion == 'success'
+    
     steps:
       - name: My first step
         env:
