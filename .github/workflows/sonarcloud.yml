@@ -76,8 +76,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=magikstic_sonarcloud
-            -Dsonar.organization=magikstic
             -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
             -Dsonar.pullrequest.key=${{ fromJson(steps.get_pr_data.outputs.data).number }}
             -Dsonar.pullrequest.branch=${{ fromJson(steps.get_pr_data.outputs.data).head.ref }}
@@ -91,7 +89,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=magikstic_sonarcloud
-            -Dsonar.organization=magikstic
             -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
             -Dsonar.pullrequest.branch.name=${{ github.event.workflow_run.head_branch }}
